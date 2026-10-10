@@ -131,7 +131,7 @@
     .person-role { font-size: 12px; color: var(--accent-gold); font-weight: 700; text-transform: uppercase; margin-bottom: 10px; }
     .person-logo-small { height: 35px; object-fit: contain; margin-top: 8px; cursor: zoom-in; }
 
-    /* MODALES POP-UP */
+    /* MODALES POP-UP - MISE EN PAGE HARMONISÉE ET SYMÉTRIQUE */
     .modal-window {
       display: none;
       position: fixed;
@@ -153,37 +153,34 @@
     }
     .modal-header-flex {
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       justify-content: center;
-      gap: 30px;
+      gap: 35px;
       flex-wrap: wrap;
       margin-bottom: 20px;
       padding-bottom: 20px;
       border-bottom: 1px solid var(--border-color);
     }
-    .modal-img-box { text-align: center; }
-    .modal-avatar-big {
-      height: 180px;
-      width: 150px;
-      object-fit: cover;
-      border-radius: 4px;
-      border: 2px solid var(--accent-gold);
-      cursor: zoom-in;
-      transition: transform 0.2s;
+    .modal-img-box {
+      width: 160px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
-    .modal-avatar-big:hover { transform: scale(1.03); }
-    .modal-logo-big {
-      height: 120px;
-      max-width: 180px;
-      object-fit: contain;
+    .modal-avatar-big, .modal-logo-big {
+      width: 160px;
+      height: 190px;
       border-radius: 4px;
       border: 2px solid var(--accent-gold);
       cursor: zoom-in;
       transition: transform 0.2s;
       background: #f8fafc;
-      padding: 4px;
+      padding: 5px;
     }
-    .modal-logo-big:hover { transform: scale(1.03); }
+    .modal-avatar-big { object-fit: cover; }
+    .modal-logo-big { object-fit: contain; }
+    .modal-avatar-big:hover, .modal-logo-big:hover { transform: scale(1.03); }
 
     .btn-close {
       background: var(--gov-slate);
@@ -585,16 +582,14 @@
     <div class="modal-header-flex">
       <div class="modal-img-box">
         <img id="m-portrait" src="" class="modal-avatar-big" onclick="zoomImage(this.src)" onerror="this.src='profil-neutre.jpg'">
-        <!-- LÉGENDE DYNAMIQUE PORTRAIT (Nom du personnage) -->
-        <div id="m-caption-portrait" style="font-size:11px; font-style:italic; color:#64748b; margin-top:4px;"></div>
+        <div id="m-caption-portrait" style="font-size:12px; font-style:italic; color:#64748b; margin-top:8px;"></div>
       </div>
       <div class="modal-img-box">
         <img id="m-logo" src="" class="modal-logo-big" onclick="zoomImage(this.src)" onerror="this.style.display='none'">
-        <!-- LÉGENDE DYNAMIQUE SCEAU (Rôle ou Ministère) -->
-        <div id="m-caption-logo" style="font-size:11px; font-style:italic; color:#64748b; margin-top:4px;"></div>
+        <div id="m-caption-logo" style="font-size:12px; font-style:italic; color:#64748b; margin-top:8px;"></div>
       </div>
     </div>
-    <div style="text-align:center;">
+    <div style="text-align:center; margin-top:10px;">
       <h2 id="m-nom" style="font-family:'Cinzel',serif; color:var(--gov-slate); margin:0;"></h2>
       <div id="m-role" style="font-size:13px; color:var(--accent-gold); font-weight:700; text-transform:uppercase; margin-top:4px;"></div>
     </div>
@@ -668,7 +663,6 @@ function initData() {
 
   showChamber('communes');
 
-  // REMPLISSAGE AUTOMATIQUE DES PORTRAITS, NOMS ET LOGOS DEPUIS DATA.JSON
   if(globalData.ministres) {
     for(let k in globalData.ministres) {
       let m = globalData.ministres[k];
@@ -719,9 +713,9 @@ function openModal(key) {
   document.getElementById('m-role').innerText = m.role;
   document.getElementById('m-bio').innerText = m.bio;
   
-  // INJECTION DYNAMIQUE DES LÉGENDES DEPUIS LE JSON
-  document.getElementById('m-caption-portrait').innerText = m.nom; // Affiche le nom du personnage en dessous du portrait
-  document.getElementById('m-caption-logo').innerText = "Sceau de " + m.role; // Affiche dynamiquement le rôle ou "Sceau du/de [rôle]"
+  // Légendes sous les boîtes d'images
+  document.getElementById('m-caption-portrait').innerText = m.nom;
+  document.getElementById('m-caption-logo').innerText = "Sceau de " + m.role;
 
   const imgP = document.getElementById('m-portrait');
   imgP.src = m.portrait;
