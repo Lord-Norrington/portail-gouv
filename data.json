@@ -27,9 +27,11 @@
       "image": "chambre-senateurs.jpg",
       "description": "La Chambre des Seigneurs forme la chambre haute du Parlement. Elle réunit les pairs héréditaires. Elle assure la révision constitutionnelle avec le congrès et elle valide ou invalide les lois votés par la chambre des communes.",
       "sieges": [
-        { "parti": "Pairs de la Couronne & Noblesse", "nombre": 85, "couleur": "#c5a059" },
-        { "parti": "Conseillers d'État Nommés", "nombre": 40, "couleur": "#475569" },
-        { "parti": "Représentants des Provinces", "nombre": 25, "couleur": "#0f766e" }
+        { "parti": "Lord Alaric de Mireval - Duc de Lysange", "nombre": 1, "couleur": "#c5a059" },
+        { "parti": "Lord William Dudarov - Grand Duc de Brundberg", "nombre": 1, "couleur": "#c5a059" },
+        { "parti": "Lord Jean de Richelieu - Duc d'Auron", "nombre": 1, "couleur": "#c5a059" }
+        { "parti": "Comte Adrien de Montclair", "nombre": 1, "couleur": "#c5a059" }
+        { "parti": "Duchesse Aurora-Julietta de Montmorency", "nombre": 1, "couleur": "#c5a059" }
       ]
     }
   },
