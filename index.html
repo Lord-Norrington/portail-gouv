@@ -245,6 +245,20 @@
     }
     .btn-chamber.active { background: var(--gov-slate); color: var(--gold-light); border-color: var(--accent-gold); }
 
+    /* GRILLES RESPONSIVES POUR LE PARLEMENT */
+    .responsive-grid-ref {
+      display: grid;
+      grid-template-columns: 1fr 350px;
+      gap: 30px;
+      align-items: center;
+    }
+    .responsive-grid-chamber {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 25px;
+      align-items: start;
+    }
+
     /* BÂTIMENTS */
     .building-card { display: grid; grid-template-columns: 300px 1fr; gap: 20px; padding: 20px; background: #fff; border: 1px solid var(--border-color); border-radius: 6px; margin-bottom: 20px; }
     .building-img { width: 100%; height: 200px; object-fit: cover; border-radius: 4px; border: 1px solid var(--border-color); cursor: zoom-in; }
@@ -255,9 +269,14 @@
 
     footer { background: var(--bg-dark); color: #94a3b8; text-align: center; padding: 25px 20px; font-size: 12px; border-top: 3px solid var(--accent-gold); margin-top: 50px; }
 
+    /* ADAPTATION MOBILE GLOBALE */
     @media (max-width: 768px) {
       .building-card { grid-template-columns: 1fr; }
       .parlement-toggle { flex-direction: column; }
+      .responsive-grid-ref { grid-template-columns: 1fr; }
+      .responsive-grid-chamber { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 24px; }
+      .brand-title { font-size: 16px; }
     }
   </style>
 </head>
@@ -459,7 +478,7 @@
     <div class="panel">
       <div class="panel-header"><h2 class="panel-title">Résultats des Consultations Électorales & Référendums</h2></div>
       <div style="padding: 25px;">
-        <div style="display:grid; grid-template-columns: 1fr 350px; gap:30px; align-items:center;">
+        <div class="responsive-grid-ref">
           <div>
             <h3 id="ref-titre" style="font-family:'Cinzel',serif; color:var(--gov-slate); margin-top:0;">Référendum</h3>
             <p id="ref-date" style="font-size:13px; color:#64748b; font-weight:bold;"></p>
@@ -474,8 +493,8 @@
             <p id="ref-commentaire" style="font-size:14px; line-height:1.7; color:#334155;"></p>
           </div>
 
-          <div style="background:#fff; padding:15px; border:1px solid var(--border-color); border-radius:6px; text-align:center;">
-            <canvas id="electionChart" width="300" height="300"></canvas>
+          <div style="background:#fff; padding:15px; border:1px solid var(--border-color); border-radius:6px; text-align:center; max-width: 100%; overflow: hidden;">
+            <canvas id="electionChart" width="300" height="300" style="max-width: 100%; height: auto;"></canvas>
           </div>
         </div>
       </div>
@@ -490,7 +509,7 @@
           <button id="btn-senateurs" class="btn-chamber" onclick="showChamber('senateurs')">👑 Chambre des Seigneurs</button>
         </div>
 
-        <div id="chamber-display" style="display:grid; grid-template-columns: 300px 1fr; gap:25px; align-items:start;">
+        <div id="chamber-display" class="responsive-grid-chamber">
           <div>
             <img id="chamber-img" src="" onclick="zoomImage(this.src)" style="width:100%; border-radius:6px; border:1px solid var(--border-color); cursor:zoom-in;" onerror="this.alt='Illustration de la Chambre'">
           </div>
@@ -670,6 +689,7 @@ function initData() {
     },
     options: {
       responsive: true,
+      maintainAspectRatio: true,
       plugins: { legend: { position: 'bottom' } }
     }
   });
@@ -726,9 +746,8 @@ function openModal(key) {
   document.getElementById('m-role').innerText = m.role;
   document.getElementById('m-bio').innerText = m.bio;
   
-  // Légendes sous les boîtes d'images
   document.getElementById('m-caption-portrait').innerText = m.nom;
-  document.getElementById('m-caption-logo').innerText = "Sceau";
+  document.getElementById('m-caption-logo').innerText = "Sceau de " + m.role;
 
   const imgP = document.getElementById('m-portrait');
   imgP.src = m.portrait;
