@@ -29,8 +29,8 @@
       "sieges": [
         { "parti": "Lord Alaric de Mireval - Duc de Lysange", "nombre": 1, "couleur": "#c5a059" },
         { "parti": "Lord William Dudarov - Grand Duc de Brundberg", "nombre": 1, "couleur": "#c5a059" },
-        { "parti": "Lord Jean de Richelieu - Duc d'Auron", "nombre": 1, "couleur": "#c5a059" }
-        { "parti": "Comte Adrien de Montclair", "nombre": 1, "couleur": "#c5a059" }
+        { "parti": "Lord Jean de Richelieu - Duc d'Auron", "nombre": 1, "couleur": "#c5a059" },
+        { "parti": "Comte Adrien de Montclair", "nombre": 1, "couleur": "#c5a059" },
         { "parti": "Duchesse Aurora-Julietta de Montmorency", "nombre": 1, "couleur": "#c5a059" }
       ]
     }
