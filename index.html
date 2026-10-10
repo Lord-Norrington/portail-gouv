@@ -161,17 +161,19 @@
       border-bottom: 1px solid var(--border-color);
     }
     .modal-img-box { text-align: center; }
-    .modal-avatar-big {
-      height: 180px;
-      width: 150px;
-      object-fit: cover;
+    .modal-avatar-big, .modal-logo-big {
+      height: 150px;
+      object-fit: contain;
       border-radius: 4px;
       border: 2px solid var(--accent-gold);
       cursor: zoom-in;
       transition: transform 0.2s;
+      background: #f8fafc;
+      padding: 4px;
     }
-    .modal-avatar-big:hover { transform: scale(1.03); }
-    .modal-logo-big { height: 120px; max-width: 180px; object-fit: contain; }
+    .modal-avatar-big { width: 130px; height: 150px; object-fit: cover; }
+    .modal-logo-big { max-width: 150px; }
+    .modal-avatar-big:hover, .modal-logo-big:hover { transform: scale(1.03); }
 
     .btn-close {
       background: var(--gov-slate);
@@ -350,52 +352,52 @@
       
       <div class="card-grid">
         <div class="person-card" onclick="openModal('delacroix')">
-          <img src="portrait-premier-ministre.jpg" class="person-avatar" onerror="this.src='profil-neutre.jpg'">
+          <img id="card-delacroix-img" src="" class="person-avatar" onerror="this.src='profil-neutre.jpg'">
           <div class="person-name" id="card-delacroix-nom">Hélène DELACROIX</div>
           <div class="person-role">Premier Ministre</div>
-          <img src="logo-primature.jpg" class="person-logo-small" onerror="this.style.display='none'">
+          <img id="card-delacroix-logo" src="" class="person-logo-small" onerror="this.style.display='none'">
         </div>
 
         <div class="person-card" onclick="openModal('norfolk')">
-          <img src="portrait-ministre-affaires-etrangeres.jpg" class="person-avatar" onerror="this.src='profil-neutre.jpg'">
+          <img id="card-norfolk-img" src="" class="person-avatar" onerror="this.src='profil-neutre.jpg'">
           <div class="person-name" id="card-norfolk-nom">Charles-Frederick de NORFOLK</div>
           <div class="person-role">Affaires Étrangères</div>
-          <img src="logo-affaires-etrangeres.jpg" class="person-logo-small" onerror="this.style.display='none'">
+          <img id="card-norfolk-logo" src="" class="person-logo-small" onerror="this.style.display='none'">
         </div>
 
         <div class="person-card" onclick="openModal('bardfiels')">
-          <img src="portrait-ministre-economie.jpg" class="person-avatar" onerror="this.src='profil-neutre.jpg'">
+          <img id="card-bardfiels-img" src="" class="person-avatar" onerror="this.src='profil-neutre.jpg'">
           <div class="person-name" id="card-bardfiels-nom">Érick Émile de BARDFIELS</div>
           <div class="person-role">Économie & Finances</div>
-          <img src="logo-economie.jpg" class="person-logo-small" onerror="this.style.display='none'">
+          <img id="card-bardfiels-logo" src="" class="person-logo-small" onerror="this.style.display='none'">
         </div>
 
         <div class="person-card" onclick="openModal('poutou')">
-          <img src="portrait-ministre-justice.jpg" class="person-avatar" onerror="this.src='profil-neutre.jpg'">
+          <img id="card-poutou-img" src="" class="person-avatar" onerror="this.src='profil-neutre.jpg'">
           <div class="person-name" id="card-poutou-nom">Philippe POUTOU</div>
           <div class="person-role">Justice</div>
-          <img src="logo-justice.jpg" class="person-logo-small" onerror="this.style.display='none'">
+          <img id="card-poutou-logo" src="" class="person-logo-small" onerror="this.style.display='none'">
         </div>
 
         <div class="person-card" onclick="openModal('bassompierre')">
-          <img src="portrait-ministre-interieur.jpg" class="person-avatar" onerror="this.src='profil-neutre.jpg'">
+          <img id="card-bassompierre-img" src="" class="person-avatar" onerror="this.src='profil-neutre.jpg'">
           <div class="person-name" id="card-bassompierre-nom">Victor de BASSOMPIERRE</div>
           <div class="person-role">Intérieur</div>
-          <img src="logo-interieur.jpg" class="person-logo-small" onerror="this.style.display='none'">
+          <img id="card-bassompierre-logo" src="" class="person-logo-small" onerror="this.style.display='none'">
         </div>
 
         <div class="person-card" onclick="openModal('mireval')">
-          <img src="portrait-gouverneur-general.jpg" class="person-avatar" onerror="this.src='profil-neutre.jpg'">
+          <img id="card-mireval-img" src="" class="person-avatar" onerror="this.src='profil-neutre.jpg'">
           <div class="person-name" id="card-mireval-nom">Lord Alaric de MIREVAL</div>
           <div class="person-role">Gouverneur Général</div>
-          <img src="logo-gouvernorat.jpg" class="person-logo-small" onerror="this.style.display='none'">
+          <img id="card-mireval-logo" src="" class="person-logo-small" onerror="this.style.display='none'">
         </div>
 
         <div class="person-card" onclick="openModal('dgsr')">
-          <img src="portrait-dgsr.jpg" class="person-avatar" onerror="this.src='profil-neutre.jpg'">
+          <img id="card-dgsr-img" src="" class="person-avatar" onerror="this.src='profil-neutre.jpg'">
           <div class="person-name" id="card-dgsr-nom">Directeur « M »</div>
           <div class="person-role">Sécurité (DGSR)</div>
-          <img src="logo-dgsr.jpg" class="person-logo-small" onerror="this.style.display='none'">
+          <img id="card-dgsr-logo" src="" class="person-logo-small" onerror="this.style.display='none'">
         </div>
       </div>
     </div>
@@ -499,10 +501,10 @@
 
         <div class="card-grid" style="padding:15px 0 30px;">
           <div class="person-card" onclick="openModal('dudarov')">
-            <img src="portrait-juge-1.jpg" class="person-avatar" onerror="this.src='profil-neutre.jpg'">
+            <img id="card-dudarov-img" src="" class="person-avatar" onerror="this.src='profil-neutre.jpg'">
             <div class="person-name" id="card-dudarov-nom">Lord William DUDAROV</div>
             <div class="person-role">Grand-Duc de Brundberg · Premier Juge</div>
-            <img src="logo-hautecour.jpg" class="person-logo-small" onerror="this.style.display='none'">
+            <img id="card-dudarov-logo" src="" class="person-logo-small" onerror="this.style.display='none'">
           </div>
 
           <div class="person-card" style="opacity:0.7;">
@@ -520,11 +522,10 @@
 
         <h3 style="font-family:'Cinzel',serif; color:var(--gov-slate);">Archives Juridiques & Codes Officiels</h3>
         
-        <!-- INTÉGRATION DE TOUS LES PDF OFFICIELS -->
         <div class="pdf-item">
           <div>
             <strong>Constitution du Royaume-Uni de Novarcis (1962)</strong>
-            <div style="font-size:12px; color:#64748b;">Loi fondamentale et perpétuelle du Royaume</div>
+            <div style="font-size:12px; color:#64748b;">Loi fondamentale et perpétuelle du Royaume[cite: 50]</div>
           </div>
           <a href="constitution_1962.pdf" target="_blank" class="btn-pdf">Télécharger PDF ➔</a>
         </div>
@@ -532,7 +533,7 @@
         <div class="pdf-item">
           <div>
             <strong>Code Électoral du Royaume</strong>
-            <div style="font-size:12px; color:#64748b;">Règles des scrutins, législatives, municipales et référendums</div>
+            <div style="font-size:12px; color:#64748b;">Règles des scrutins, législatives, municipales et référendums[cite: 12, 13]</div>
           </div>
           <a href="code_electoral.pdf" target="_blank" class="btn-pdf">Télécharger PDF ➔</a>
         </div>
@@ -540,7 +541,7 @@
         <div class="pdf-item">
           <div>
             <strong>Code Civil du Royaume</strong>
-            <div style="font-size:12px; color:#64748b;">Régulation des relations civiles, contrats et responsabilités</div>
+            <div style="font-size:12px; color:#64748b;">Régulation des relations civiles, contrats et responsabilités[cite: 36, 37]</div>
           </div>
           <a href="code_civil.pdf" target="_blank" class="btn-pdf">Télécharger PDF ➔</a>
         </div>
@@ -548,7 +549,7 @@
         <div class="pdf-item">
           <div>
             <strong>Code Pénal Novarcien</strong>
-            <div style="font-size:12px; color:#64748b;">Infractions, échelle des peines et loi martiale</div>
+            <div style="font-size:12px; color:#64748b;">Infractions, échelle des peines et loi martiale[cite: 22, 23]</div>
           </div>
           <a href="code_penal.pdf" target="_blank" class="btn-pdf">Télécharger PDF ➔</a>
         </div>
@@ -556,7 +557,7 @@
         <div class="pdf-item">
           <div>
             <strong>Code de la Noblesse du Royaume</strong>
-            <div style="font-size:12px; color:#64748b;">Titres, dignités, anoblissements et ordres de chevalerie</div>
+            <div style="font-size:12px; color:#64748b;">Titres, dignités, anoblissements et ordres de chevalerie[cite: 1, 2]</div>
           </div>
           <a href="code_noblesse.pdf" target="_blank" class="btn-pdf">Télécharger PDF ➔</a>
         </div>
@@ -577,8 +578,9 @@
         <div style="font-size:11px; color:#64748b; margin-top:4px;">🔍 Clic pour zoomer</div>
       </div>
       <div class="modal-img-box">
-        <img id="m-logo" src="" class="modal-logo-big" onerror="this.style.display='none'">
-        <div style="font-size:11px; color:#64748b; margin-top:4px;">Logo / Sceau Officiel</div>
+        <!-- LE LOGO EST MAINTENANT CLIQUABLE POUR ZOOMER AUSSI -->
+        <img id="m-logo" src="" class="modal-logo-big" onclick="zoomImage(this.src)" onerror="this.style.display='none'" title="Cliquez pour agrandir">
+        <div style="font-size:11px; color:#64748b; margin-top:4px;">🔍 Clic pour zoomer</div>
       </div>
     </div>
     <div style="text-align:center;">
@@ -592,6 +594,7 @@
 </div>
 
 <!-- LIGHTBOX ZOOM -->
+<link rel="stylesheet" href="index.html">
 <div id="image-lightbox" onclick="this.style.display='none'">
   <img id="lightbox-img" src="">
 </div>
@@ -655,11 +658,25 @@ function initData() {
 
   showChamber('communes');
 
+  // REMPLISSAGE AUTOMATIQUE DES PORTRAITS ET LOGOS DEPUIS DATA.JSON
   if(globalData.ministres) {
     for(let k in globalData.ministres) {
       let m = globalData.ministres[k];
-      let el = document.getElementById('card-' + k + '-nom');
-      if(el) el.innerText = m.nom;
+      
+      let elNom = document.getElementById('card-' + k + '-nom');
+      if(elNom) elNom.innerText = m.nom;
+
+      let elImg = document.getElementById('card-' + k + '-img');
+      if(elImg) {
+        elImg.src = m.portrait;
+        elImg.onerror = () => { elImg.src = 'profil-neutre.jpg'; };
+      }
+
+      let elLogo = document.getElementById('card-' + k + '-logo');
+      if(elLogo) {
+        elLogo.src = m.logo;
+        elLogo.onerror = () => { elLogo.style.display = 'none'; };
+      }
     }
   }
 }
@@ -706,6 +723,7 @@ function openModal(key) {
 function closeModal() { document.getElementById('global-modal').style.display = 'none'; }
 
 function zoomImage(src) {
+  if(!src || src.includes('undefined')) return;
   document.getElementById('lightbox-img').src = src;
   document.getElementById('image-lightbox').style.display = 'flex';
 }
