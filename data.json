@@ -1,0 +1,94 @@
+{
+  "referendum": {
+    "titre": "Référendum sur la Loi sur les associations",
+    "date": "7 Octobre 2026",
+    "inscrits": 3,
+    "votants": 3,
+    "resultats": [
+      { "choix": "OUI (Promulguée)", "pourcentage": 66.7, "couleur": "#16a34a" },
+      { "choix": "NON", "pourcentage": 33.3, "couleur": "#dc2626" }
+    ],
+    "commentaire": "La Loi sur les associations a été formellement approuvée à la majorité qualifiée par le peuple novarcien et promulguée par le Souverain."
+  },
+  "parlement": {
+    "communes": {
+      "titre": "Chambre des Communes",
+      "image": "chambre-communes.jpg",
+      "description": "La Chambre des Communes constitue la chambre basse du Parlement du Royaume-Uni de Novarcis. Composée des députés élus au suffrage universel direct, elle vote les lois, examine le budget national et contrôle l'action du Gouvernement dirigé par le Premier Ministre.",
+      "sieges": [
+        { "parti": "Parti Conservateur & Loyaliste", "nombre": 180, "couleur": "#1e3a8a" },
+        { "parti": "Alliance Démocrate & Libérale", "nombre": 120, "couleur": "#0284c7" },
+        { "parti": "Rassemblement Populaire", "nombre": 60, "couleur": "#d97706" },
+        { "parti": "Indépendants", "nombre": 15, "couleur": "#64748b" }
+      ]
+    },
+    "senateurs": {
+      "titre": "Chambre des Seigneurs & Sénateurs",
+      "image": "chambre-senateurs.jpg",
+      "description": "La Chambre des Seigneurs forme la chambre haute du Parlement. Elle réunit les pairs héréditaires, les ducs du Royaume et les conseillers de la Couronne. Elle assure la révision constitutionnelle, la haute sagesse législative et la pérennité des institutions régaliennes.",
+      "sieges": [
+        { "parti": "Pairs de la Couronne & Noblesse", "nombre": 85, "couleur": "#c5a059" },
+        { "parti": "Conseillers d'État Nommés", "nombre": 40, "couleur": "#475569" },
+        { "parti": "Représentants des Provinces", "nombre": 25, "couleur": "#0f766e" }
+      ]
+    }
+  },
+  "ministres": {
+    "delacroix": {
+      "nom": "Hélène DELACROIX",
+      "role": "Premier Ministre · En fonction depuis 2025",
+      "portrait": "portrait-premier-ministre.jpg",
+      "logo": "logo-primature.jpg",
+      "bio": "Hélène Delacroix dirige le Gouvernement du Royaume-Uni de Novarcis. À la tête du Cabinet, elle coordonne les actions ministérielles et assure la conduite des affaires publiques en étroite concertation avec les institutions parlementaires et sous l'autorité suprême de la Couronne."
+    },
+    "norfolk": {
+      "nom": "Charles-Frederick de NORFOLK",
+      "role": "Ministre des Affaires Étrangères",
+      "portrait": "portrait-ministre-affaires-etrangeres.jpg",
+      "logo": "logo-affaires-etrangeres.jpg",
+      "bio": "En charge de la diplomatie du Royaume, Charles-Frederick de Norfolk supervise le réseau des ambassades novarciennes à l'étranger et dirige les négociations internationales depuis l'édifice des Affaires Étrangères."
+    },
+    "bardfiels": {
+      "nom": "Érick Émile de BARDFIELS",
+      "role": "Ministre de l'Économie & des Finances",
+      "portrait": "portrait-ministre-economie.jpg",
+      "logo": "logo-economie.jpg",
+      "bio": "Le Vicomte de Bardfiels administre les finances publiques, veille à la stabilité de la couronne novarcienne et supervise les grandes orientations économiques et industrielles de l'État."
+    },
+    "poutou": {
+      "nom": "Philippe POUTOU",
+      "role": "Ministre de la Justice",
+      "portrait": "portrait-ministre-justice.jpg",
+      "logo": "logo-justice.jpg",
+      "bio": "Garde des Sceaux du Royaume, Philippe Poutou garantit l'indépendance des juridictions, l'application du Code Civil et veille à l'administration des cours et tribunaux de la Nation."
+    },
+    "bassompierre": {
+      "nom": "Victor de BASSOMPIERRE",
+      "role": "Ministre de l'Intérieur",
+      "portrait": "portrait-ministre-interieur.jpg",
+      "logo": "logo-interieur.jpg",
+      "bio": "Ancien Premier Ministre, Victor de Bassompierre est chargé de la sécurité intérieure, de la protection du territoire national et de l'administration générale des provinces du Royaume."
+    },
+    "mireval": {
+      "nom": "Lord Alaric de MIREVAL",
+      "role": "Duc de Lysange · Gouverneur Général",
+      "portrait": "portrait-gouverneur-general.jpg",
+      "logo": "logo-gouvernorat.jpg",
+      "bio": "Le Duc de Lysange représente le Souverain et l'exécutif novarcien au sein des Provinces Continentales de l'Empire Britannique. Il administre les territoires continentaux et coordonne leur sécurité régalienne."
+    },
+    "dgsr": {
+      "nom": "Directeur « M »",
+      "role": "Direction Générale de la Sécurité du Royaume",
+      "portrait": "portrait-dgsr.jpg",
+      "logo": "logo-dgsr.jpg",
+      "bio": "Information Classifiée — Niveau d'Accès Réalisé : L'identité exacte du directeur de la DGSR est protégée par le secret d'État. Seul le Premier Ministre et Sa Majesté le Roi connaissent son identité civile. Le Directeur « M » supervise le renseignement intérieur et extérieur du Royaume."
+    },
+    "dudarov": {
+      "nom": "Lord William DUDAROV",
+      "role": "Grand-Duc de Brundberg · Premier Juge à la Haute Cour",
+      "portrait": "portrait-juge-1.jpg",
+      "logo": "logo-hautecour.jpg",
+      "bio": "Grand-Duc de Brundberg, Lord William Dudarov siège comme Premier Juge à la Haute Cour d'État. Il est chargé de garantir le respect strict des textes constitutionnels du Royaume."
+    }
+  }
+}

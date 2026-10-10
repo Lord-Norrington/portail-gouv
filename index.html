@@ -1,0 +1,726 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gouvernement du Royaume-Uni de Novarcis — Portail Officiel</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    :root {
+      --bg-dark: #0f172a;
+      --gov-slate: #1e293b;
+      --gov-blue: #2563eb;
+      --accent-gold: #c5a059;
+      --gold-light: #fef08a;
+      --paper-bg: #f1f5f9;
+      --card-bg: #ffffff;
+      --text-main: #0f172a;
+      --border-color: #cbd5e1;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      color: var(--text-main);
+      background: var(--paper-bg);
+    }
+
+    /* HEADER GOUVERNEMENTAL */
+    header {
+      background: linear-gradient(180deg, var(--bg-dark) 0%, var(--gov-slate) 100%);
+      color: white;
+      border-bottom: 3px solid var(--accent-gold);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    }
+    .top-header {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 24px;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+    .brand-container { display: flex; align-items: center; gap: 18px; cursor: pointer; }
+    .gov-logo-img { height: 70px; object-fit: contain; }
+    .brand-title {
+      font-family: 'Cinzel', serif;
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      color: #f8fafc;
+      text-transform: uppercase;
+    }
+    .brand-sub { font-size: 11px; color: var(--accent-gold); letter-spacing: 2px; text-transform: uppercase; margin-top: 2px; }
+
+    /* NAVIGATION */
+    nav { background: rgba(15, 23, 42, 0.95); border-top: 1px solid rgba(197, 160, 89, 0.3); }
+    .nav-links { max-width: 1200px; margin: auto; display: flex; gap: 2px; flex-wrap: wrap; }
+    .nav-btn {
+      background: transparent;
+      border: none;
+      color: #cbd5e1;
+      padding: 14px 18px;
+      font-family: 'Cinzel', serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .nav-btn:hover, .nav-btn.active { color: var(--gold-light); background: rgba(255, 255, 255, 0.08); }
+    .nav-btn.active { border-bottom: 3px solid var(--accent-gold); }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(rgba(15, 23, 42, 0.88), rgba(30, 41, 59, 0.92)),
+                  radial-gradient(circle at center, #334155 0%, #0f172a 100%);
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+      border-bottom: 1px solid var(--accent-gold);
+    }
+    .hero h1 { font-family: 'Cinzel', serif; font-size: 32px; color: #f8fafc; margin: 0 0 10px; }
+    .hero p { max-width: 750px; margin: auto; font-size: 15px; color: var(--accent-gold); font-style: italic; }
+
+    /* LAYOUT */
+    .wrap { max-width: 1200px; margin: auto; padding: 30px 15px; }
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+
+    .panel {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+      margin-bottom: 30px;
+      overflow: hidden;
+    }
+    .panel-header { padding: 18px 24px; background: #e2e8f0; border-bottom: 1px solid var(--border-color); }
+    .panel-title { font-family: 'Cinzel', serif; font-size: 18px; color: var(--gov-slate); margin: 0; }
+
+    /* GRILLES ET CARTES */
+    .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; padding: 25px; }
+    .person-card {
+      background: white;
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      padding: 20px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+    }
+    .person-card:hover { border-color: var(--accent-gold); transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+    .person-avatar {
+      width: 130px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 4px;
+      border: 2px solid var(--accent-gold);
+      margin-bottom: 12px;
+      background: #e2e8f0;
+    }
+    .person-name { font-family: 'Cinzel', serif; font-size: 16px; font-weight: 700; color: var(--gov-slate); margin: 0 0 4px; }
+    .person-role { font-size: 12px; color: var(--accent-gold); font-weight: 700; text-transform: uppercase; margin-bottom: 10px; }
+    .person-logo-small { height: 35px; object-fit: contain; margin-top: 8px; }
+
+    /* MODALES POP-UP */
+    .modal-window {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(15, 23, 42, 0.88);
+      z-index: 1000;
+      overflow-y: auto;
+      padding: 40px 20px;
+    }
+    .modal-content {
+      max-width: 750px;
+      margin: auto;
+      background: white;
+      border: 2px solid var(--accent-gold);
+      border-radius: 8px;
+      padding: 30px;
+      position: relative;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+    }
+    .modal-header-flex {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .modal-img-box { text-align: center; }
+    .modal-avatar-big {
+      height: 180px;
+      width: 150px;
+      object-fit: cover;
+      border-radius: 4px;
+      border: 2px solid var(--accent-gold);
+      cursor: zoom-in;
+      transition: transform 0.2s;
+    }
+    .modal-avatar-big:hover { transform: scale(1.03); }
+    .modal-logo-big { height: 120px; max-width: 180px; object-fit: contain; }
+
+    .btn-close {
+      background: var(--gov-slate);
+      color: #f8fafc;
+      border: 1px solid var(--accent-gold);
+      padding: 8px 16px;
+      font-family: 'Cinzel', serif;
+      font-size: 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-bottom: 15px;
+    }
+
+    /* LIGHTBOX ZOOM */
+    #image-lightbox {
+      display: none;
+      position: fixed;
+      top:0; left:0; width:100%; height:100%;
+      background: rgba(0,0,0,0.92);
+      z-index: 2000;
+      justify-content: center;
+      align-items: center;
+      cursor: zoom-out;
+    }
+    #image-lightbox img { max-width: 90%; max-height: 90%; border: 3px solid var(--accent-gold); border-radius: 6px; box-shadow: 0 0 30px rgba(0,0,0,0.8); }
+
+    /* ORGANIGRAMME VERTICAL ÉPURÉ */
+    .orga-clean {
+      background: #f8fafc;
+      border: 1px solid var(--border-color);
+      padding: 25px;
+      border-radius: 6px;
+      margin-top: 20px;
+      text-align: center;
+    }
+    .orga-node {
+      display: inline-block;
+      padding: 12px 20px;
+      border-radius: 4px;
+      font-weight: bold;
+      font-size: 13px;
+      margin: 5px;
+    }
+    .orga-king { background: var(--gov-slate); color: white; border-bottom: 3px solid var(--accent-gold); }
+    .orga-court { background: #fff; border: 2px solid var(--accent-gold); color: var(--gov-slate); }
+    .orga-pm { background: #dbeafe; border: 1px solid #3b82f6; color: #1e3a8a; }
+
+    /* PARLEMENT BOUTONS & CHAMBRES */
+    .parlement-toggle { display: flex; gap: 10px; margin-bottom: 20px; }
+    .btn-chamber {
+      flex: 1;
+      padding: 15px;
+      background: #f1f5f9;
+      border: 1px solid var(--border-color);
+      font-family: 'Cinzel', serif;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--gov-slate);
+      cursor: pointer;
+      border-radius: 6px;
+      transition: all 0.3s;
+    }
+    .btn-chamber.active { background: var(--gov-slate); color: var(--gold-light); border-color: var(--accent-gold); }
+
+    /* BÂTIMENTS */
+    .building-card { display: grid; grid-template-columns: 300px 1fr; gap: 20px; padding: 20px; background: #fff; border: 1px solid var(--border-color); border-radius: 6px; margin-bottom: 20px; }
+    .building-img { width: 100%; height: 200px; object-fit: cover; border-radius: 4px; border: 1px solid var(--border-color); }
+
+    /* PDF */
+    .pdf-item { display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; background: #fff; border: 1px solid var(--border-color); border-radius: 4px; margin-bottom: 12px; }
+    .btn-pdf { background: var(--gov-slate); color: #f8fafc; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-size: 12px; font-family: 'Cinzel', serif; border: 1px solid var(--accent-gold); }
+
+    footer { background: var(--bg-dark); color: #94a3b8; text-align: center; padding: 25px 20px; font-size: 12px; border-top: 3px solid var(--accent-gold); margin-top: 50px; }
+
+    @media (max-width: 768px) {
+      .building-card { grid-template-columns: 1fr; }
+      .parlement-toggle { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="top-header">
+    <div class="brand-container" onclick="resetToHome()">
+      <img src="logo-gouvernement.jpg" alt="Logo Gouvernement" class="gov-logo-img" onerror="this.style.display='none'">
+      <div>
+        <div class="brand-title">Gouvernement de Novarcis</div>
+        <div class="brand-sub">Portail Officiel de l'Exécutif & des Ministères</div>
+      </div>
+    </div>
+  </div>
+  <nav>
+    <div class="nav-links">
+      <button id="btn-executif" class="nav-btn active" onclick="switchTab('tab-executif', this)">L'Exécutif & Primature</button>
+      <button class="nav-btn" onclick="switchTab('tab-cabinet', this)">Cabinet & Ministères</button>
+      <button class="nav-btn" onclick="switchTab('tab-palais', this)">Palais de l'État</button>
+      <button class="nav-btn" onclick="switchTab('tab-parlement', this)">Parlement & Élections</button>
+      <button class="nav-btn" onclick="switchTab('tab-justice', this)">Justice & Textes Officiels</button>
+    </div>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <h1>Gouvernement du Royaume-Uni de Novarcis</h1>
+    <p>« Servir le Royaume, appliquer la Loi et garantir la prospérité de la Nation sous la conduite de la Couronne. »</p>
+  </div>
+</section>
+
+<main class="wrap">
+
+  <!-- TAB 1 : L'EXÉCUTIF & ORGANIGRAMME -->
+  <div id="tab-executif" class="tab-content active">
+    <div class="panel">
+      <div class="panel-header"><h2 class="panel-title">La Primature & L'Organigramme Général des Pouvoirs</h2></div>
+      <div style="padding: 25px; line-height: 1.7;">
+        <h3 style="font-family:'Cinzel',serif; color:var(--gov-slate);">Rôle du Premier Ministre</h3>
+        <p>Le Premier Ministre est le chef du Gouvernement du Royaume-Uni de Novarcis. Nommé par le Souverain après les élections législatives, il dirige le Cabinet, met en œuvre la politique de la Nation et répond de son action devant le Parlement.</p>
+
+        <h3 style="font-family:'Cinzel',serif; color:var(--gov-slate); margin-top:30px;">Architecture des Pouvoirs de l'État</h3>
+        <div class="orga-clean">
+          <div class="orga-node orga-king">👑 SA MAJESTÉ LE ROI JAMES I<sup>er</sup> (Chef de l'État)</div>
+          <div style="font-size:18px; margin:8px 0; color:#64748b;">↓</div>
+          <div style="display:flex; justify-content:center; gap:20px; flex-wrap:wrap;">
+            <div class="orga-node orga-court">🏛️ HAUTE COUR D'ÉTAT<br><span style="font-size:10px; font-weight:normal;">Pouvoir Judiciaire Indépendant</span></div>
+            <div class="orga-node orga-pm">💼 PREMIER MINISTRE & CABINET<br><span style="font-size:10px; font-weight:normal;">Pouvoir Exécutif</span></div>
+          </div>
+        </div>
+
+        <h3 style="font-family:'Cinzel',serif; color:var(--gov-slate); margin-top:35px;">Chronologie des Premiers Ministres depuis 1945</h3>
+        
+        <div style="border-left: 3px solid var(--accent-gold); padding-left: 15px; margin-bottom: 20px;">
+          <div style="font-family:'Cinzel',serif; font-weight:bold; color:var(--gov-slate);">👑 Sous le Règne de S.M. Théophile II (1924 — 1957)</div>
+          <ul style="list-style:none; padding:0; margin:8px 0 0; font-size:13px; color:#475569;">
+            <li style="padding:3px 0;"><strong>1940 — 1945 :</strong> Lord Winston Churchill (Gouvernement de Résistance)</li>
+            <li style="padding:3px 0;"><strong>1945 — 1952 :</strong> Sir Arthur Pendelton</li>
+            <li style="padding:3px 0;"><strong>1952 — 1957 :</strong> Charles de Saint-Germain</li>
+          </ul>
+        </div>
+
+        <div style="border-left: 3px solid var(--accent-gold); padding-left: 15px; margin-bottom: 20px;">
+          <div style="font-family:'Cinzel',serif; font-weight:bold; color:var(--gov-slate);">👑 Sous la Régence de S.A.R. Louise-Auguste (1957 — 1974)</div>
+          <ul style="list-style:none; padding:0; margin:8px 0 0; font-size:13px; color:#475569;">
+            <li style="padding:3px 0;"><strong>1957 — 1965 :</strong> Henri de Valrose</li>
+            <li style="padding:3px 0;"><strong>1965 — 1974 :</strong> Alexandre de Vellemont</li>
+          </ul>
+        </div>
+
+        <div style="border-left: 3px solid var(--accent-gold); padding-left: 15px; margin-bottom: 20px;">
+          <div style="font-family:'Cinzel',serif; font-weight:bold; color:var(--gov-slate);">👑 Sous le Règne de S.M. Théodore III (1974 — 2021)</div>
+          <ul style="list-style:none; padding:0; margin:8px 0 0; font-size:13px; color:#475569;">
+            <li style="padding:3px 0;"><strong>1974 — 1988 :</strong> Lord Edward Norrington</li>
+            <li style="padding:3px 0;"><strong>1988 — 2002 :</strong> Jean-Baptiste de Clairval</li>
+            <li style="padding:3px 0;"><strong>2002 — 2015 :</strong> Guillaume d'Argenteuil</li>
+            <li style="padding:3px 0;"><strong>2015 — 2021 :</strong> Marc-Antoine de la Roche</li>
+          </ul>
+        </div>
+
+        <div style="border-left: 3px solid var(--accent-gold); padding-left: 15px; margin-bottom: 20px;">
+          <div style="font-family:'Cinzel',serif; font-weight:bold; color:var(--gov-slate);">👑 Sous le Règne de S.M. James I<sup>er</sup> (Depuis 2021)</div>
+          <ul style="list-style:none; padding:0; margin:8px 0 0; font-size:13px; color:#475569;">
+            <li style="padding:3px 0;"><strong>2021 — 2025 :</strong> Victor de Bassompierre</li>
+            <li style="padding:3px 0;"><strong>2025 — Présent :</strong> Hélène DELACROIX</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 2 : CABINET & MINISTÈRES -->
+  <div id="tab-cabinet" class="tab-content">
+    <div class="panel">
+      <div class="panel-header"><h2 class="panel-title">Membres du Cabinet Ministériel (Cliquez pour la fiche complète)</h2></div>
+      
+      <div class="card-grid">
+        <div class="person-card" onclick="openModal('delacroix')">
+          <img src="portrait-premier-ministre.jpg" class="person-avatar" onerror="this.src='profil-neutre.jpg'">
+          <div class="person-name" id="card-delacroix-nom">Hélène DELACROIX</div>
+          <div class="person-role">Premier Ministre</div>
+          <img src="logo-primature.jpg" class="person-logo-small" onerror="this.style.display='none'">
+        </div>
+
+        <div class="person-card" onclick="openModal('norfolk')">
+          <img src="portrait-ministre-affaires-etrangeres.jpg" class="person-avatar" onerror="this.src='profil-neutre.jpg'">
+          <div class="person-name" id="card-norfolk-nom">Charles-Frederick de NORFOLK</div>
+          <div class="person-role">Affaires Étrangères</div>
+          <img src="logo-affaires-etrangeres.jpg" class="person-logo-small" onerror="this.style.display='none'">
+        </div>
+
+        <div class="person-card" onclick="openModal('bardfiels')">
+          <img src="portrait-ministre-economie.jpg" class="person-avatar" onerror="this.src='profil-neutre.jpg'">
+          <div class="person-name" id="card-bardfiels-nom">Érick Émile de BARDFIELS</div>
+          <div class="person-role">Économie & Finances</div>
+          <img src="logo-economie.jpg" class="person-logo-small" onerror="this.style.display='none'">
+        </div>
+
+        <div class="person-card" onclick="openModal('poutou')">
+          <img src="portrait-ministre-justice.jpg" class="person-avatar" onerror="this.src='profil-neutre.jpg'">
+          <div class="person-name" id="card-poutou-nom">Philippe POUTOU</div>
+          <div class="person-role">Justice</div>
+          <img src="logo-justice.jpg" class="person-logo-small" onerror="this.style.display='none'">
+        </div>
+
+        <div class="person-card" onclick="openModal('bassompierre')">
+          <img src="portrait-ministre-interieur.jpg" class="person-avatar" onerror="this.src='profil-neutre.jpg'">
+          <div class="person-name" id="card-bassompierre-nom">Victor de BASSOMPIERRE</div>
+          <div class="person-role">Intérieur</div>
+          <img src="logo-interieur.jpg" class="person-logo-small" onerror="this.style.display='none'">
+        </div>
+
+        <div class="person-card" onclick="openModal('mireval')">
+          <img src="portrait-gouverneur-general.jpg" class="person-avatar" onerror="this.src='profil-neutre.jpg'">
+          <div class="person-name" id="card-mireval-nom">Lord Alaric de MIREVAL</div>
+          <div class="person-role">Gouverneur Général</div>
+          <img src="logo-gouvernorat.jpg" class="person-logo-small" onerror="this.style.display='none'">
+        </div>
+
+        <div class="person-card" onclick="openModal('dgsr')">
+          <img src="portrait-dgsr.jpg" class="person-avatar" onerror="this.src='profil-neutre.jpg'">
+          <div class="person-name" id="card-dgsr-nom">Directeur « M »</div>
+          <div class="person-role">Sécurité (DGSR)</div>
+          <img src="logo-dgsr.jpg" class="person-logo-small" onerror="this.style.display='none'">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 3 : PALAIS DE L'ÉTAT -->
+  <div id="tab-palais" class="tab-content">
+    <div class="panel">
+      <div class="panel-header"><h2 class="panel-title">Sièges du Gouvernement & Édifices Officiels</h2></div>
+      <div style="padding: 25px;">
+        <div class="building-card">
+          <img src="palais-richelieu.jpg" class="building-img" onerror="this.alt='Photo Palais de Richelieu'">
+          <div>
+            <h3 style="font-family:'Cinzel',serif; color:var(--gov-slate); margin-top:0;">Palais de Richelieu</h3>
+            <p style="font-size:12px; color:var(--accent-gold); font-weight:700; text-transform:uppercase;">📍 Centre-ville de Rovère-sur-Lys · Siège de la Primature</p>
+            <p style="font-size:14px; line-height:1.7; color:#334155;">
+              Construit en 1763 sous le règne de Charles VI, le Palais de Richelieu est implanté en plein cœur de Rovère-sur-Lys. Chef-d'œuvre de l'architecture classique novarcienne, il abrite les bureaux du Premier Ministre, la salle du Conseil des Ministres ainsi que les services administratifs de la Primature.
+            </p>
+          </div>
+        </div>
+
+        <div class="building-card">
+          <img src="ministere-affaires-etrangeres.jpg" class="building-img" onerror="this.alt='Photo Ministère des Affaires Étrangères'">
+          <div>
+            <h3 style="font-family:'Cinzel',serif; color:var(--gov-slate); margin-top:0;">Ministère des Affaires Étrangères</h3>
+            <p style="font-size:12px; color:var(--accent-gold); font-weight:700; text-transform:uppercase;">📍 En face du Palais d'Aldricourt · Rovère-sur-Lys</p>
+            <p style="font-size:14px; line-height:1.7; color:#334155;">
+              Édifié en 1867, cet imposant bâtiment fait directement face au Palais d'Aldricourt. Centre névralgique de la diplomatie du Royaume, il accueille les ambassadeurs étrangers et abrite le cabinet du Ministre des Affaires Étrangères ainsi que les traités internationaux du pays.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 4 : PARLEMENT & ÉLECTIONS -->
+  <div id="tab-parlement" class="tab-content">
+    
+    <div class="panel">
+      <div class="panel-header"><h2 class="panel-title">Résultats des Consultations Électorales & Référendums</h2></div>
+      <div style="padding: 25px;">
+        <div style="display:grid; grid-template-columns: 1fr 350px; gap:30px; align-items:center;">
+          <div>
+            <h3 id="ref-titre" style="font-family:'Cinzel',serif; color:var(--gov-slate); margin-top:0;">Référendum</h3>
+            <p id="ref-date" style="font-size:13px; color:#64748b; font-weight:bold;"></p>
+            
+            <div style="background:#f8fafc; border:1px solid var(--border-color); padding:15px; border-radius:6px; margin:15px 0;">
+              <div style="font-size:16px; font-weight:bold; color:var(--gov-slate);">
+                Taux de Participation : <span id="ref-participation" style="color:#16a34a;">100%</span>
+              </div>
+              <div id="ref-scores-list" style="margin-top:10px; font-size:14px; font-weight:bold;"></div>
+            </div>
+
+            <p id="ref-commentaire" style="font-size:14px; line-height:1.7; color:#334155;"></p>
+          </div>
+
+          <div style="background:#fff; padding:15px; border:1px solid var(--border-color); border-radius:6px; text-align:center;">
+            <canvas id="electionChart" width="300" height="300"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-header"><h2 class="panel-title">Les Chambres du Parlement</h2></div>
+      <div style="padding: 25px;">
+        
+        <div class="parlement-toggle">
+          <button id="btn-communes" class="btn-chamber active" onclick="showChamber('communes')">🏛️ Chambre des Communes</button>
+          <button id="btn-senateurs" class="btn-chamber" onclick="showChamber('senateurs')">👑 Chambre des Seigneurs & Sénateurs</button>
+        </div>
+
+        <div id="chamber-display" style="display:grid; grid-template-columns: 300px 1fr; gap:25px; align-items:start;">
+          <div>
+            <img id="chamber-img" src="" style="width:100%; border-radius:6px; border:1px solid var(--border-color);" onerror="this.alt='Illustration de la Chambre'">
+          </div>
+          <div>
+            <h3 id="chamber-title" style="font-family:'Cinzel',serif; color:var(--gov-slate); margin-top:0;"></h3>
+            <p id="chamber-desc" style="font-size:14px; line-height:1.7; color:#334155;"></p>
+            
+            <h4 style="font-family:'Cinzel',serif; color:var(--gov-slate); margin-top:20px;">Répartition des Sièges</h4>
+            <div id="chamber-seats-list" style="background:#f8fafc; padding:15px; border:1px solid var(--border-color); border-radius:6px;"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!-- TAB 5 : JUSTICE & TEXTES OFFICIELS -->
+  <div id="tab-justice" class="tab-content">
+    <div class="panel">
+      <div class="panel-header"><h2 class="panel-title">Haute Cour d'État & Textes Fondateurs</h2></div>
+      <div style="padding: 25px;">
+
+        <h3 style="font-family:'Cinzel',serif; color:var(--gov-slate); margin-top:0;">La Haute Cour d'État</h3>
+        <p style="font-size:14px; line-height:1.7; color:#334155;">
+          Plus haute juridiction du Royaume, la Haute Cour d'État veille à la constitutionnalité des lois et juge des affaires d'État d'exception. Totalement indépendante du pouvoir exécutif, elle est composée de trois juges éminents nommés par la Couronne.
+        </p>
+
+        <div class="card-grid" style="padding:15px 0 30px;">
+          <div class="person-card" onclick="openModal('dudarov')">
+            <img src="portrait-juge-1.jpg" class="person-avatar" onerror="this.src='profil-neutre.jpg'">
+            <div class="person-name" id="card-dudarov-nom">Lord William DUDAROV</div>
+            <div class="person-role">Grand-Duc de Brundberg · Premier Juge</div>
+            <img src="logo-hautecour.jpg" class="person-logo-small" onerror="this.style.display='none'">
+          </div>
+
+          <div class="person-card" style="opacity:0.7;">
+            <img src="profil-neutre.jpg" class="person-avatar">
+            <div class="person-name">Siège Vacant</div>
+            <div class="person-role">Second Juge (Nomination à venir)</div>
+          </div>
+
+          <div class="person-card" style="opacity:0.7;">
+            <img src="profil-neutre.jpg" class="person-avatar">
+            <div class="person-name">Siège Vacant</div>
+            <div class="person-role">Troisième Juge (Nomination à venir)</div>
+          </div>
+        </div>
+
+        <h3 style="font-family:'Cinzel',serif; color:var(--gov-slate);">Archives Juridiques & Codes Officiels</h3>
+        
+        <!-- INTÉGRATION DE TOUS LES PDF OFFICIELS -->
+        <div class="pdf-item">
+          <div>
+            <strong>Constitution du Royaume-Uni de Novarcis (1962)</strong>
+            <div style="font-size:12px; color:#64748b;">Loi fondamentale et perpétuelle du Royaume</div>
+          </div>
+          <a href="constitution_1962.pdf" target="_blank" class="btn-pdf">Télécharger PDF ➔</a>
+        </div>
+
+        <div class="pdf-item">
+          <div>
+            <strong>Code Électoral du Royaume</strong>
+            <div style="font-size:12px; color:#64748b;">Règles des scrutins, législatives, municipales et référendums</div>
+          </div>
+          <a href="code_electoral.pdf" target="_blank" class="btn-pdf">Télécharger PDF ➔</a>
+        </div>
+
+        <div class="pdf-item">
+          <div>
+            <strong>Code Civil du Royaume</strong>
+            <div style="font-size:12px; color:#64748b;">Régulation des relations civiles, contrats et responsabilités</div>
+          </div>
+          <a href="code_civil.pdf" target="_blank" class="btn-pdf">Télécharger PDF ➔</a>
+        </div>
+
+        <div class="pdf-item">
+          <div>
+            <strong>Code Pénal Novarcien</strong>
+            <div style="font-size:12px; color:#64748b;">Infractions, échelle des peines et loi martiale</div>
+          </div>
+          <a href="code_penal.pdf" target="_blank" class="btn-pdf">Télécharger PDF ➔</a>
+        </div>
+
+        <div class="pdf-item">
+          <div>
+            <strong>Code de la Noblesse du Royaume</strong>
+            <div style="font-size:12px; color:#64748b;">Titres, dignités, anoblissements et ordres de chevalerie</div>
+          </div>
+          <a href="code_noblesse.pdf" target="_blank" class="btn-pdf">Télécharger PDF ➔</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<!-- MODALE DÉTAILLÉE -->
+<div id="global-modal" class="modal-window">
+  <div class="modal-content">
+    <button class="btn-close" onclick="closeModal()">✕ Fermer</button>
+    <div class="modal-header-flex">
+      <div class="modal-img-box">
+        <img id="m-portrait" src="" class="modal-avatar-big" onclick="zoomImage(this.src)" onerror="this.src='profil-neutre.jpg'" title="Cliquez pour agrandir">
+        <div style="font-size:11px; color:#64748b; margin-top:4px;">🔍 Clic pour zoomer</div>
+      </div>
+      <div class="modal-img-box">
+        <img id="m-logo" src="" class="modal-logo-big" onerror="this.style.display='none'">
+        <div style="font-size:11px; color:#64748b; margin-top:4px;">Logo / Sceau Officiel</div>
+      </div>
+    </div>
+    <div style="text-align:center;">
+      <h2 id="m-nom" style="font-family:'Cinzel',serif; color:var(--gov-slate); margin:0;"></h2>
+      <div id="m-role" style="font-size:13px; color:var(--accent-gold); font-weight:700; text-transform:uppercase; margin-top:4px;"></div>
+    </div>
+    <div style="margin-top:20px; line-height:1.7; color:#334155; font-size:14px;">
+      <p id="m-bio"></p>
+    </div>
+  </div>
+</div>
+
+<!-- LIGHTBOX ZOOM -->
+<div id="image-lightbox" onclick="this.style.display='none'">
+  <img id="lightbox-img" src="">
+</div>
+
+<footer>
+  <div>Gouvernement du Royaume-Uni de Novarcis — Secrétariat Général de la Primature</div>
+  <div style="margin-top:5px; font-size:11px; color:#64748b;">Palais de Richelieu — Tous droits réservés</div>
+</footer>
+
+<script>
+let globalData = {};
+let electionChartInstance = null;
+
+document.addEventListener("DOMContentLoaded", function() {
+  fetch('data.json')
+    .then(response => response.json())
+    .then(data => {
+      globalData = data;
+      initData();
+    })
+    .catch(err => console.log("Note: data.json non chargé ou en attente", err));
+});
+
+function initData() {
+  if(!globalData.referendum) return;
+
+  const ref = globalData.referendum;
+  document.getElementById('ref-titre').innerText = ref.titre;
+  document.getElementById('ref-date').innerText = "Scrutin du " + ref.date;
+  
+  let part = ((ref.votants / ref.inscrits) * 100).toFixed(0) + "%";
+  document.getElementById('ref-participation').innerText = part;
+  document.getElementById('ref-commentaire').innerText = ref.commentaire;
+
+  let scoreHtml = "";
+  let labels = [];
+  let values = [];
+  let colors = [];
+
+  ref.resultats.forEach(r => {
+    scoreHtml += `<div style="margin-bottom:4px;">• ${r.choix} : <span style="color:${r.couleur}">${r.pourcentage}%</span></div>`;
+    labels.push(r.choix);
+    values.push(r.pourcentage);
+    colors.push(r.couleur);
+  });
+  document.getElementById('ref-scores-list').innerHTML = scoreHtml;
+
+  const ctx = document.getElementById('electionChart').getContext('2d');
+  if(electionChartInstance) electionChartInstance.destroy();
+  electionChartInstance = new Chart(ctx, {
+    type: 'pie',
+    data: {
+      labels: labels,
+      datasets: [{ data: values, backgroundColor: colors, borderColor: '#ffffff', borderWidth: 2 }]
+    },
+    options: {
+      responsive: true,
+      plugins: { legend: { position: 'bottom' } }
+    }
+  });
+
+  showChamber('communes');
+
+  if(globalData.ministres) {
+    for(let k in globalData.ministres) {
+      let m = globalData.ministres[k];
+      let el = document.getElementById('card-' + k + '-nom');
+      if(el) el.innerText = m.nom;
+    }
+  }
+}
+
+function showChamber(key) {
+  if(!globalData.parlement) return;
+  const c = globalData.parlement[key];
+  document.getElementById('chamber-title').innerText = c.titre;
+  document.getElementById('chamber-desc').innerText = c.description;
+  document.getElementById('chamber-img').src = c.image;
+
+  let seatsHtml = "";
+  c.sieges.forEach(s => {
+    seatsHtml += `<div style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px dashed #cbd5e1; font-size:13px;">
+      <span style="font-weight:bold; color:${s.couleur}">■ ${s.parti}</span>
+      <span><strong>${s.nombre}</strong> sièges</span>
+    </div>`;
+  });
+  document.getElementById('chamber-seats-list').innerHTML = seatsHtml;
+
+  document.getElementById('btn-communes').classList.toggle('active', key === 'communes');
+  document.getElementById('btn-senateurs').classList.toggle('active', key === 'senateurs');
+}
+
+function openModal(key) {
+  if(!globalData.ministres || !globalData.ministres[key]) return;
+  const m = globalData.ministres[key];
+  document.getElementById('m-nom').innerText = m.nom;
+  document.getElementById('m-role').innerText = m.role;
+  document.getElementById('m-bio').innerText = m.bio;
+  
+  const imgP = document.getElementById('m-portrait');
+  imgP.src = m.portrait;
+  imgP.onerror = () => { imgP.src = 'profil-neutre.jpg'; };
+
+  const imgL = document.getElementById('m-logo');
+  imgL.src = m.logo;
+  imgL.style.display = 'block';
+  imgL.onerror = () => { imgL.style.display = 'none'; };
+
+  document.getElementById('global-modal').style.display = 'block';
+}
+
+function closeModal() { document.getElementById('global-modal').style.display = 'none'; }
+
+function zoomImage(src) {
+  document.getElementById('lightbox-img').src = src;
+  document.getElementById('image-lightbox').style.display = 'flex';
+}
+
+function resetToHome() {
+  switchTab('tab-executif', document.getElementById('btn-executif'));
+}
+
+function switchTab(tabId, btn) {
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(tabId).classList.add('active');
+  btn.classList.add('active');
+}
+</script>
+
+</body>
+</html>
