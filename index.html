@@ -162,8 +162,19 @@
       border-bottom: 1px solid var(--border-color);
     }
     .modal-img-box { text-align: center; }
-    .modal-avatar-big, .modal-logo-big {
-      height: 150px;
+    .modal-avatar-big {
+      height: 180px;
+      width: 150px;
+      object-fit: cover;
+      border-radius: 4px;
+      border: 2px solid var(--accent-gold);
+      cursor: zoom-in;
+      transition: transform 0.2s;
+    }
+    .modal-avatar-big:hover { transform: scale(1.03); }
+    .modal-logo-big {
+      height: 120px;
+      max-width: 180px;
       object-fit: contain;
       border-radius: 4px;
       border: 2px solid var(--accent-gold);
@@ -172,9 +183,7 @@
       background: #f8fafc;
       padding: 4px;
     }
-    .modal-avatar-big { width: 130px; height: 150px; object-fit: cover; }
-    .modal-logo-big { max-width: 150px; }
-    .modal-avatar-big:hover, .modal-logo-big:hover { transform: scale(1.03); }
+    .modal-logo-big:hover { transform: scale(1.03); }
 
     .btn-close {
       background: var(--gov-slate);
@@ -576,9 +585,13 @@
     <div class="modal-header-flex">
       <div class="modal-img-box">
         <img id="m-portrait" src="" class="modal-avatar-big" onclick="zoomImage(this.src)" onerror="this.src='profil-neutre.jpg'">
+        <!-- LÉGENDE DYNAMIQUE PORTRAIT (Nom du personnage) -->
+        <div id="m-caption-portrait" style="font-size:11px; font-style:italic; color:#64748b; margin-top:4px;"></div>
       </div>
       <div class="modal-img-box">
         <img id="m-logo" src="" class="modal-logo-big" onclick="zoomImage(this.src)" onerror="this.style.display='none'">
+        <!-- LÉGENDE DYNAMIQUE SCEAU (Rôle ou Ministère) -->
+        <div id="m-caption-logo" style="font-size:11px; font-style:italic; color:#64748b; margin-top:4px;"></div>
       </div>
     </div>
     <div style="text-align:center;">
@@ -655,6 +668,7 @@ function initData() {
 
   showChamber('communes');
 
+  // REMPLISSAGE AUTOMATIQUE DES PORTRAITS, NOMS ET LOGOS DEPUIS DATA.JSON
   if(globalData.ministres) {
     for(let k in globalData.ministres) {
       let m = globalData.ministres[k];
@@ -700,10 +714,15 @@ function showChamber(key) {
 function openModal(key) {
   if(!globalData.ministres || !globalData.ministres[key]) return;
   const m = globalData.ministres[key];
+  
   document.getElementById('m-nom').innerText = m.nom;
   document.getElementById('m-role').innerText = m.role;
   document.getElementById('m-bio').innerText = m.bio;
   
+  // INJECTION DYNAMIQUE DES LÉGENDES DEPUIS LE JSON
+  document.getElementById('m-caption-portrait').innerText = m.nom; // Affiche le nom du personnage en dessous du portrait
+  document.getElementById('m-caption-logo').innerText = "Sceau de " + m.role; // Affiche dynamiquement le rôle ou "Sceau du/de [rôle]"
+
   const imgP = document.getElementById('m-portrait');
   imgP.src = m.portrait;
   imgP.onerror = () => { imgP.src = 'profil-neutre.jpg'; };
