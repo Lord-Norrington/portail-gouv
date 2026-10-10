@@ -35,8 +35,8 @@
   },
   "ministres": {
     "delacroix": {
-      "nom": "Hélène BEN LADEN",
-      "role": "Premier Ministre · En fonction depuis 2025",
+      "nom": "Hélène DELACROIX",
+      "role": "Premier Ministre · En fonction depuis le 27/09/2026",
       "portrait": "portrait-premier-ministre.jpg",
       "logo": "logo-primature.jpg",
       "bio": "Hélène Delacroix dirige le Gouvernement du Royaume-Uni de Novarcis. À la tête du Cabinet, elle coordonne les actions ministérielles et assure la conduite des affaires publiques en étroite concertation avec les institutions parlementaires et sous l'autorité suprême de la Couronne."
@@ -49,7 +49,7 @@
       "bio": "En charge de la diplomatie du Royaume, Charles-Frederick de Norfolk supervise le réseau des ambassades novarciennes à l'étranger et dirige les négociations internationales depuis l'édifice des Affaires Étrangères."
     },
     "bardfiels": {
-      "nom": "Érick Émile de BARDFIELS",
+      "nom": "Lord Érick Émile de BARDFIELS",
       "role": "Ministre de l'Économie & des Finances",
       "portrait": "portrait-ministre-economie.jpg",
       "logo": "logo-economie.jpg",
@@ -67,18 +67,18 @@
       "role": "Ministre de l'Intérieur",
       "portrait": "portrait-ministre-interieur.jpg",
       "logo": "logo-interieur.jpg",
-      "bio": "Ancien Premier Ministre, Victor de Bassompierre est chargé de la sécurité intérieure, de la protection du territoire national et de l'administration générale des provinces du Royaume."
+      "bio": "Victor de Bassompierre est chargé de la sécurité intérieure, de la protection du territoire national et de l'administration générale des provinces du Royaume."
     },
     "mireval": {
       "nom": "Lord Alaric de MIREVAL",
-      "role": "Duc de Lysange · Gouverneur Général",
+      "role": "Gouverneur Général des provinces continentales",
       "portrait": "portrait-gouverneur-general.jpg",
       "logo": "logo-gouvernorat.jpg",
       "bio": "Le Duc de Lysange représente le Souverain et l'exécutif novarcien au sein des Provinces Continentales de l'Empire Britannique. Il administre les territoires continentaux et coordonne leur sécurité régalienne."
     },
     "dgsr": {
-      "nom": "Directeur « M »",
-      "role": "Direction Générale de la Sécurité du Royaume",
+      "nom": "« M »",
+      "role": "Directeur de la DGSR",
       "portrait": "portrait-dgsr.jpg",
       "logo": "logo-dgsr.jpg",
       "bio": "Information Classifiée — Niveau d'Accès Réalisé : L'identité exacte du directeur de la DGSR est protégée par le secret d'État. Seul le Premier Ministre et Sa Majesté le Roi connaissent son identité civile. Le Directeur « M » supervise le renseignement intérieur et extérieur du Royaume."
