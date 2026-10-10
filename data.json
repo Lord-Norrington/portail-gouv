@@ -14,18 +14,18 @@
     "communes": {
       "titre": "Chambre des Communes",
       "image": "chambre-communes.jpg",
-      "description": "La Chambre des Communes constitue la chambre basse du Parlement du Royaume-Uni de Novarcis. Composée des députés élus au suffrage universel direct, elle vote les lois, examine le budget national et contrôle l'action du Gouvernement dirigé par le Premier Ministre.",
+      "description": "La Chambre des Communes constitue la chambre basse du Parlement du Royaume-Uni de Novarcis. Composée des 297 députés élus au suffrage universel direct, elle vote les lois, examine le budget national et contrôle l'action du Gouvernement dirigé par le Premier Ministre.",
       "sieges": [
-        { "parti": "Parti Conservateur & Loyaliste", "nombre": 180, "couleur": "#1e3a8a" },
-        { "parti": "Alliance Démocrate & Libérale", "nombre": 120, "couleur": "#0284c7" },
-        { "parti": "Rassemblement Populaire", "nombre": 60, "couleur": "#d97706" },
-        { "parti": "Indépendants", "nombre": 15, "couleur": "#64748b" }
+        { "parti": "Parti Conservateur", "nombre": 88, "couleur": "#A70000" },
+        { "parti": "Parti Socialiste", "nombre": 66, "couleur": "#DD0FC6" },
+        { "parti": "UDN", "nombre": 33, "couleur": "#161FE7" },
+        { "parti": "Indépendants", "nombre": 110, "couleur": "#9AA2B3" }
       ]
     },
     "senateurs": {
-      "titre": "Chambre des Seigneurs & Sénateurs",
+      "titre": "Chambre des Seigneurs",
       "image": "chambre-senateurs.jpg",
-      "description": "La Chambre des Seigneurs forme la chambre haute du Parlement. Elle réunit les pairs héréditaires, les ducs du Royaume et les conseillers de la Couronne. Elle assure la révision constitutionnelle, la haute sagesse législative et la pérennité des institutions régaliennes.",
+      "description": "La Chambre des Seigneurs forme la chambre haute du Parlement. Elle réunit les pairs héréditaires. Elle assure la révision constitutionnelle avec le congrès et elle valide ou invalide les lois votés par la chambre des communes.",
       "sieges": [
         { "parti": "Pairs de la Couronne & Noblesse", "nombre": 85, "couleur": "#c5a059" },
         { "parti": "Conseillers d'État Nommés", "nombre": 40, "couleur": "#475569" },
