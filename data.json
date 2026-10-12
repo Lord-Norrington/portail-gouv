@@ -44,25 +44,25 @@
       "bio": "Hélène Delacroix dirige le Gouvernement du Royaume-Uni de Novarcis. À la tête du Cabinet, elle coordonne les actions ministérielles et assure la conduite des affaires publiques en étroite concertation avec les institutions parlementaires et sous l'autorité suprême de la Couronne."
     },
     "norfolk": {
-      "nom": "Charles-Frederick de NORFOLK",
+      "nom": " Lord Charles GRAVIER de VERGENNES",
       "role": "Ministre des Affaires Étrangères",
       "portrait": "portrait-ministre-affaires-etrangeres.jpg",
       "logo": "logo-affaires-etrangeres.jpg",
-      "bio": "En charge de la diplomatie du Royaume, Charles-Frederick de Norfolk supervise le réseau des ambassades novarciennes à l'étranger et dirige les négociations internationales depuis l'édifice des Affaires Étrangères."
+      "bio": "En charge de la diplomatie du Royaume, Charles Gravier, comte de Vergennes, supervise le réseau des ambassades novarciennes à l'étranger et dirige les négociations internationales depuis l'édifice des Affaires Étrangères."
     },
     "bardfiels": {
-      "nom": "Lord Érick Émile de BARDFIELS",
+      "nom": "Lord Alaric de MIREVAL",
       "role": "Ministre de l'Économie & des Finances",
       "portrait": "portrait-ministre-economie.jpg",
       "logo": "logo-economie.jpg",
-      "bio": "Le Vicomte de Bardfiels administre les finances publiques, veille à la stabilité de la couronne novarcienne et supervise les grandes orientations économiques et industrielles de l'État."
+      "bio": "Lord Alaric administre les finances publiques, veille à la stabilité de la couronne novarcienne et supervise les grandes orientations économiques et industrielles de l'État."
     },
     "poutou": {
-      "nom": "Philippe POUTOU",
+      "nom": "Lord Érick Émile de BARDFIELS",
       "role": "Ministre de la Justice",
       "portrait": "portrait-ministre-justice.jpg",
       "logo": "logo-justice.jpg",
-      "bio": "Garde des Sceaux du Royaume, Philippe Poutou garantit l'indépendance des juridictions, l'application du Code Civil et veille à l'administration des cours et tribunaux de la Nation."
+      "bio": "Garde des Sceaux du Royaume, le vicomte de Bardfiels garantit l'indépendance des juridictions, l'application du Code Civil et veille à l'administration des cours et tribunaux de la Nation."
     },
     "bassompierre": {
       "nom": "Victor de BASSOMPIERRE",
